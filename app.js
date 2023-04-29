@@ -8,9 +8,11 @@ const app = express()
 
 // routers
 const userRouter = require("./routes/users")
+const driverRouter = require("./routes/drivers")
 
 // middlewares
 const errorHandlerMiddleware = require("./middlewares/errorHandler")
+const checkUser = require("./middlewares/user")
 
 app.use(express.json())
 
@@ -20,6 +22,7 @@ app.get("/api/v1", (req, res) => {
 
 // routes
 app.use("/api/v1/users", userRouter)
+app.use("/api/v1/drivers", checkUser, driverRouter)
 
 // middlewares
 app.use(errorHandlerMiddleware)
