@@ -1,9 +1,13 @@
 require("dotenv").config()
-const express = require("express")
+require("express-async-errors")
 
+// app
+const express = require("express")
+const connectDB = require("./db/connect")
 const app = express()
 
-const port = process.env.PORT || 3000
+// routers
+const userRouter = require("./routes/users")
 
 app.use(express.json())
 
@@ -11,9 +15,23 @@ app.get("/api/v1", (req, res) => {
 	res.send("Hello")
 })
 
-app.listen(port, () => console.log(`Server is listening on port ${port}`))
+// routes
+app.use("/api/v1/users", userRouter)
 
-// USERS /users ans /users/:id
+const port = process.env.PORT || 3000
+
+const start = async () => {
+	try {
+		await connectDB(process.env.MONGO_URI)
+		app.listen(port, () => console.log(`Server is listening on port ${port}`))
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+start()
+
+// USERS /users and /users/:id
 
 // DRIVERS /drivers/ and /drivers/:id
 
@@ -23,4 +41,4 @@ app.listen(port, () => console.log(`Server is listening on port ${port}`))
 
 // PROVIDERS /providers/ and /providers/:id
 
-// DELIVERIES /deliveries/ => queries: year, month, driver, vehicle, client, provider  and /deliveries/:id 
+// DELIVERIES /deliveries/ => queries: year, month, driver, vehicle, client, provider  and /deliveries/:id
