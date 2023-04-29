@@ -9,6 +9,9 @@ const app = express()
 // routers
 const userRouter = require("./routes/users")
 
+// middlewares
+const errorHandlerMiddleware = require("./middlewares/errorHandler")
+
 app.use(express.json())
 
 app.get("/api/v1", (req, res) => {
@@ -17,6 +20,9 @@ app.get("/api/v1", (req, res) => {
 
 // routes
 app.use("/api/v1/users", userRouter)
+
+// middlewares
+app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000
 
