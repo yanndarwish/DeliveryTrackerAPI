@@ -39,7 +39,7 @@ const updateDriver = async (req, res) => {
 		throw customError("Please provide all required informations", 400)
 	}
 
-	const driver = await Driver.findByIdAndUpdate(
+	const driver = await Driver.findOneAndUpdate(
 		{ _id: id, createdBy: req.user.userId },
 		req.body,
 		{
@@ -57,7 +57,7 @@ const updateDriver = async (req, res) => {
 
 const deleteDriver = async (req, res) => {
 	const { id } = req.params
-	const driver = await Driver.findByIdAndDelete({
+	const driver = await Driver.findOneAndDelete({
 		_id: id,
 		createdBy: req.user.userId,
 	})

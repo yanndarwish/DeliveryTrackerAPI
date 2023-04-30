@@ -100,7 +100,7 @@ const updateDelivery = async (req, res) => {
 		throw customError("Please provide all required informations", 400)
 	}
 
-	const delivery = await Delivery.findByIdAndUpdate(
+	const delivery = await Delivery.findOneAndUpdate(
 		{ _id: id, createdBy: req.user.userId },
 		req.body,
 		{ new: true, runValidators: true }
@@ -116,7 +116,7 @@ const updateDelivery = async (req, res) => {
 const deleteDelivery = async (req, res) => {
 	const { id } = req.params
 
-	const delivery = await Delivery.findByIdAndDelete({
+	const delivery = await Delivery.findOneAndDelete({
 		_id: id,
 		createdBy: req.user.userId,
 	})
