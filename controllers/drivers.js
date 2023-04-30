@@ -9,7 +9,7 @@ const getAllDrivers = async (req, res) => {
 }
 
 const getDriver = async (req, res) => {
-	const id = req.params.id
+	const { id } = req.params
 	const driver = await Driver.find({ _id: id, createdBy: req.user.userId })
 
 	if (!driver) {
