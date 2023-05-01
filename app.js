@@ -12,6 +12,7 @@ const driverRouter = require("./routes/drivers")
 const deliveryRouter = require("./routes/deliveries")
 const vehicleRouter = require("./routes/vehicles")
 const clientRouter = require("./routes/clients")
+const providerRouter = require("./routes/providers")
 
 // middlewares
 const errorHandlerMiddleware = require("./middlewares/errorHandler")
@@ -29,6 +30,7 @@ app.use("/api/v1/drivers", checkUser, driverRouter)
 app.use("/api/v1/deliveries", checkUser, deliveryRouter)
 app.use("/api/v1/vehicles", checkUser, vehicleRouter)
 app.use("/api/v1/clients", checkUser, clientRouter)
+app.use("/api/v1/providers", checkUser, providerRouter)
 
 // middlewares
 app.use(errorHandlerMiddleware)
