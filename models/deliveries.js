@@ -4,9 +4,8 @@ const Schema = mongoose.Schema
 const DeliverySchema = new Schema(
 	{
 		provider: {
-			// type: mongoose.Types.ObjectId,
-			// ref: "Provider",
-			type: String,
+			type: mongoose.Types.ObjectId,
+			ref: "Provider",
 			required: [true, "Veuillez fournir un commissionaire"],
 		},
 		driver: {
@@ -15,10 +14,8 @@ const DeliverySchema = new Schema(
 			required: [true, "Veuillez fournir un chauffeur"],
 		},
 		vehicle: {
-			// type: mongoose.Types.ObjectId,
-			// ref: "Vehicle",
-			type: String,
-
+			type: mongoose.Types.ObjectId,
+			ref: "Vehicle",
 			required: [true, "Veuillez fournir un véhicule"],
 		},
 		pickups: {
