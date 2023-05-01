@@ -9,11 +9,9 @@ const ProviderSchema = new Schema(
 		},
 		wharehouse: {
 			type: String,
-			required: [true, "Veuillez fournir l'adresse de l'entrepôt"],
 		},
 		headquarter: {
 			type: String,
-			required: [true, "Veuillez fournir l'adresse du siège social"],
 		},
 		contactName: {
 			type: String,
@@ -21,7 +19,6 @@ const ProviderSchema = new Schema(
 		},
 		contactPhone: {
 			type: String,
-			required: [true, "Veuillez fournir un numéro de téléphone"],
 			match: [
 				/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/,
 				"Veuillez fournir un numéro de téléphone valide",
@@ -29,7 +26,10 @@ const ProviderSchema = new Schema(
 		},
 		contactMail: {
 			type: String,
-			required: [true, "Veuillez fournir un email"],
+			match: [
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+				"Veuillez fournir un email valide",
+			],
 		},
 		active: {
 			type: Boolean,

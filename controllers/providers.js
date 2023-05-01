@@ -20,23 +20,9 @@ const getProvider = async (req, res) => {
 
 const createProvider = async (req, res) => {
 	req.body.createdBy = req.user.userId
-	const {
-		name,
-		wharehouse,
-		headquarter,
-		contactName,
-		contactPhone,
-		contactMail,
-	} = req.body
+	const { name, contactName } = req.body
 
-	if (
-		(!name,
-		!wharehouse,
-		!headquarter,
-		!contactName,
-		!contactPhone,
-		!contactMail)
-	) {
+	if ((!name, !contactName)) {
 		throw customError("Please provide all required informations", 400)
 	}
 
@@ -46,23 +32,9 @@ const createProvider = async (req, res) => {
 
 const updateProvider = async (req, res) => {
 	const { id } = req.params
-	const {
-		name,
-		wharehouse,
-		headquarter,
-		contactName,
-		contactPhone,
-		contactMail,
-	} = req.body
+	const { name, contactName } = req.body
 
-	if (
-		(!name,
-		!wharehouse,
-		!headquarter,
-		!contactName,
-		!contactPhone,
-		!contactMail)
-	) {
+	if ((!name, !contactName)) {
 		throw customError("Please provide all required informations", 400)
 	}
 
