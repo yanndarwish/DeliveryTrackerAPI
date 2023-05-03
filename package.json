@@ -2,7 +2,7 @@
   "name": "deliverytracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "mongoose": "^7.1.0"
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^6.1.5",
+    "mongoose": "^7.1.0",
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
